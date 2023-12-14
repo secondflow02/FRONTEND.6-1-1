@@ -1,20 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
-// import RootLayout from "../layout/Layout";
 import { ListPage, DetailPage } from "../pages";
-import App from "../App";
+import RootLayout from "../layout/Layout";
+import GitApiPage from "../libs/apis/Api";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <App />,
-    },
-    {
-        path: "/list",
-        element: <ListPage />,
-    },
-    {
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        path: "",
+        element: <GitApiPage />,
+      },
+      {
         path: "/detail",
         element: <DetailPage />,
-    },
+      },
+    ],
+  },
 ]);
 export default router;
